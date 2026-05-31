@@ -5,492 +5,509 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="BrightAssist is a smart bathroom safety product for automatic lighting, privacy-focused sensing, and caregiver peace of mind."
+      content="BrightAssist business case: market opportunity, unit economics, revenue model, margins, go-to-market strategy, and growth plan."
     >
-    <title>BrightAssist | Safer Bathrooms Without Rewiring</title>
+    <title>BrightAssist | Business Case</title>
     <link rel="icon" href="assets/logo.png">
-    <link rel="stylesheet" href="styles.css?v=commercial-4">
+    <link rel="stylesheet" href="styles.css?v=business-1">
     <style>
-      .products .section-inner,
-      .how .section-inner {
+      .business-shell {
         width: min(1180px, calc(100vw - 48px));
         margin: 0 auto;
       }
 
-      .products .section-heading.centered,
-      .how .section-heading.centered {
-        max-width: 820px;
-        margin-right: auto;
-        margin-left: auto;
+      .business-hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+        gap: clamp(36px, 6vw, 80px);
+        align-items: center;
+        min-height: calc(100vh - 72px);
+        padding: clamp(56px, 8vw, 104px) clamp(18px, 5vw, 72px);
+        background:
+          linear-gradient(135deg, rgba(223, 245, 239, 0.96), rgba(255, 255, 255, 0.96)),
+          #dff5ef;
+      }
+
+      .business-dashboard {
+        display: grid;
+        gap: 16px;
+      }
+
+      .metric-panel,
+      .business-card,
+      .model-card,
+      .timeline-card,
+      .risk-card,
+      .cta-panel {
+        border: 1px solid #cfe2de;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 18px 50px rgba(5, 58, 58, 0.11);
+      }
+
+      .metric-panel {
+        padding: 26px;
+      }
+
+      .metric-panel strong {
+        display: block;
+        color: #086c70;
+        font-size: clamp(2rem, 4vw, 3.7rem);
+        line-height: 0.95;
+      }
+
+      .metric-panel span {
+        display: block;
+        margin-top: 10px;
+        color: #55706e;
+        line-height: 1.45;
+      }
+
+      .section {
+        padding: clamp(56px, 8vw, 104px) clamp(18px, 5vw, 72px);
+      }
+
+      .section.alt {
+        background:
+          linear-gradient(135deg, rgba(223, 245, 239, 0.92), rgba(255, 255, 255, 0.96)),
+          #dff5ef;
+      }
+
+      .section-heading.business-centered {
+        max-width: 860px;
+        margin: 0 auto 34px;
         text-align: center;
       }
 
-      .products .section-heading.centered p,
-      .how .section-heading.centered p {
+      .section-heading.business-centered p {
         margin-right: auto;
         margin-left: auto;
       }
 
-      .product-grid {
+      .business-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .business-card {
+        min-height: 260px;
+        padding: 28px;
+      }
+
+      .business-card .card-number {
+        margin-bottom: 34px;
+      }
+
+      .model-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .model-card {
+        padding: 24px;
+      }
+
+      .model-card strong {
+        display: block;
+        margin-bottom: 8px;
+        color: #086c70;
+        font-size: 1.45rem;
+      }
+
+      .economics {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
         gap: 22px;
         align-items: stretch;
       }
 
-      .product-card {
-        display: flex;
-        position: relative;
+      .unit-table {
+        width: 100%;
+        border-collapse: collapse;
         overflow: hidden;
-        flex-direction: column;
-        min-height: 475px;
-        padding: 30px;
         border: 1px solid #cfe2de;
         border-radius: 8px;
         background: #fff;
-        box-shadow: 0 16px 44px rgba(5, 58, 58, 0.1);
+        box-shadow: 0 18px 50px rgba(5, 58, 58, 0.11);
       }
 
-      .product-card::before {
-        content: "";
-        position: absolute;
-        inset: 0 0 auto;
-        height: 7px;
-        background: linear-gradient(90deg, #086c70, #f4b95f);
+      .unit-table th,
+      .unit-table td {
+        padding: 16px;
+        border-bottom: 1px solid #d8ebe7;
+        text-align: left;
       }
 
-      .product-card.featured {
-        border-color: rgba(8, 108, 112, 0.55);
-        box-shadow: 0 24px 70px rgba(5, 58, 58, 0.16);
-        transform: translateY(-10px);
-      }
-
-      .product-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-      }
-
-      .product-mark {
-        color: rgba(8, 108, 112, 0.18);
-        font-size: 2.2rem;
-        font-weight: 900;
-        line-height: 1;
-      }
-
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        min-height: 30px;
-        padding: 0 10px;
-        border: 1px solid rgba(8, 108, 112, 0.22);
-        border-radius: 999px;
+      .unit-table th {
         color: #064e52;
-        background: rgba(255, 255, 255, 0.76);
-        font-size: 0.82rem;
-        font-weight: 800;
-      }
-
-      .product-card ul {
-        display: grid;
-        gap: 10px;
-        margin: 22px 0 28px;
-        padding: 18px 18px 18px 34px;
-        border: 1px solid #d8ebe7;
-        border-radius: 8px;
         background: #f7fffc;
       }
 
-      .product-card .button {
-        margin-top: auto;
+      .unit-table tr:last-child td {
+        border-bottom: 0;
       }
 
-      .steps-grid {
-        display: grid;
-        position: relative;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
-      }
-
-      .steps-grid::before {
-        content: "";
-        position: absolute;
-        top: 50px;
-        left: calc(16.666% + 24px);
-        right: calc(16.666% + 24px);
-        height: 2px;
-        background: linear-gradient(90deg, #086c70, #f4b95f, #e48b7a);
-        opacity: 0.72;
-      }
-
-      .steps-grid article {
-        position: relative;
-        z-index: 1;
-        padding: 32px;
-        border: 1px solid #cfe2de;
-        border-radius: 8px;
-        background: #fff;
-        box-shadow: 0 16px 44px rgba(5, 58, 58, 0.1);
-        text-align: center;
-      }
-
-      .step-number {
-        display: inline-flex;
-        align-items: center;
+      .margin-callout {
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        width: 46px;
-        height: 46px;
-        margin-bottom: 30px;
-        border-radius: 50%;
-        color: #fff;
+        padding: 30px;
+        border: 1px solid rgba(8, 108, 112, 0.42);
+        border-radius: 8px;
         background: #086c70;
-        font-weight: 850;
-        box-shadow: 0 0 0 10px #fff, 0 12px 30px rgba(5, 58, 58, 0.18);
+        color: #fff;
+        box-shadow: 0 18px 50px rgba(5, 58, 58, 0.18);
       }
 
-      .steps-grid article:nth-child(2) .step-number {
-        background: #f4b95f;
+      .margin-callout strong {
+        font-size: clamp(3rem, 7vw, 5.8rem);
+        line-height: 0.9;
       }
 
-      .steps-grid article:nth-child(3) .step-number {
-        background: #e48b7a;
+      .margin-callout span {
+        margin-top: 18px;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.55;
+      }
+
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .timeline-card {
+        padding: 24px;
+      }
+
+      .timeline-card span {
+        display: inline-flex;
+        margin-bottom: 20px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        color: #064e52;
+        background: #dff5ef;
+        font-weight: 800;
+      }
+
+      .risk-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .risk-card {
+        padding: 26px;
+      }
+
+      .cta-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 24px;
+        align-items: center;
+        padding: 30px;
+      }
+
+      .business-card p,
+      .model-card p,
+      .timeline-card p,
+      .risk-card p,
+      .cta-panel p {
+        color: #55706e;
+        line-height: 1.65;
       }
 
       @media (max-width: 980px) {
-        .product-grid,
-        .steps-grid {
+        .business-hero,
+        .business-grid,
+        .model-grid,
+        .economics,
+        .timeline,
+        .risk-grid,
+        .cta-panel {
           grid-template-columns: 1fr;
-        }
-
-        .product-card,
-        .product-card.featured {
-          min-height: 0;
-          transform: none;
-        }
-
-        .steps-grid::before {
-          display: none;
         }
       }
     </style>
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="BrightAssist home">
+      <a class="brand" href="#top" aria-label="BrightAssist business home">
         <img src="assets/logo.png" alt="" class="brand-mark">
         <span>BrightAssist</span>
       </a>
-      <nav aria-label="Main navigation">
-        <a href="#benefits">Benefits</a>
-        <a href="#products">Products</a>
-        <a href="#how">How It Works</a>
-        <a href="#pilot">Pilot</a>
-        <a href="#order">Order</a>
+      <nav aria-label="Business navigation">
+        <a href="#opportunity">Opportunity</a>
+        <a href="#model">Model</a>
+        <a href="#economics">Margins</a>
+        <a href="#gtm">Go-To-Market</a>
+        <a href="#invest">Invest</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero section-band">
-        <div class="hero-copy">
-          <p class="eyebrow">Bathroom Safety, Made Simple</p>
-          <h1>Automatic bathroom lighting for safer independent living.</h1>
+      <section class="business-hero">
+        <div>
+          <p class="eyebrow">Business Case</p>
+          <h1>BrightAssist turns bathroom safety into a scalable smart-home product.</h1>
           <p class="hero-text">
-            BrightAssist mounts over an existing light switch, turns lights on
-            when someone enters, and connects to an app so families can monitor
-            the device without cameras, wearables, or rewiring.
+            A non-invasive safety device for older adults, caregivers, and
+            senior-living operators, built around automatic lighting, app
+            connectivity, and a roadmap toward privacy-focused sensing.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#order">Request Early Access</a>
-            <a class="button secondary" href="#products">Compare Products</a>
-          </div>
-          <div class="trust-row" aria-label="BrightAssist highlights">
-            <span>No cameras</span>
-            <span>No rewiring</span>
-            <span>App connected</span>
+            <a class="button primary" href="#economics">View Unit Economics</a>
+            <a class="button secondary" href="#gtm">Growth Strategy</a>
           </div>
         </div>
 
-        <div class="hero-visual" aria-label="BrightAssist product preview">
-          <div class="wall-switch">
-            <div class="sensor"></div>
-            <div class="switch-slot">
-              <div class="switch-toggle"></div>
+        <div class="business-dashboard" aria-label="Business highlights">
+          <div class="metric-panel">
+            <strong>50-65%</strong>
+            <span>Target gross margin range for direct-to-consumer hardware bundles after scale manufacturing.</span>
+          </div>
+          <div class="metric-panel">
+            <strong>3</strong>
+            <span>Revenue paths: hardware kit sales, care monitoring subscription, and B2B pilot deployments.</span>
+          </div>
+          <div class="metric-panel">
+            <strong>Low install friction</strong>
+            <span>No rewiring requirement lowers adoption barriers and reduces professional installation cost.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="opportunity">
+        <div class="business-shell">
+          <div class="section-heading business-centered">
+            <p class="eyebrow">Market Opportunity</p>
+            <h2>Aging-at-home needs practical safety products, not complicated monitoring systems.</h2>
+            <p>
+              BrightAssist targets families who want safer bathrooms for older
+              adults without cameras, wearables, or expensive smart-home rewiring.
+              The product sits between low-cost night lights and high-cost care
+              monitoring systems.
+            </p>
+          </div>
+
+          <div class="business-grid">
+            <article class="business-card">
+              <span class="card-number">01</span>
+              <h3>Customer Pain</h3>
+              <p>
+                Bathroom falls are high-risk, but many homes rely on manual light
+                switches, forgotten wearables, or privacy-invasive cameras.
+              </p>
+            </article>
+            <article class="business-card">
+              <span class="card-number">02</span>
+              <h3>Adoption Advantage</h3>
+              <p>
+                Mount-over-switch design reduces installation complexity and
+                makes pilots easier for families, landlords, and care facilities.
+              </p>
+            </article>
+            <article class="business-card">
+              <span class="card-number">03</span>
+              <h3>Expansion Path</h3>
+              <p>
+                The same app and device account model can support multiple rooms,
+                caregiver analytics, and future radar sensing modules.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="model">
+        <div class="business-shell">
+          <div class="section-heading business-centered">
+            <p class="eyebrow">Revenue Model</p>
+            <h2>Hardware creates the entry point; software and pilots create recurring upside.</h2>
+          </div>
+
+          <div class="model-grid">
+            <article class="model-card">
+              <strong>$99-$149</strong>
+              <h3>Switch Kit</h3>
+              <p>One-time sale for automatic lighting and app control.</p>
+            </article>
+            <article class="model-card">
+              <strong>$199-$299</strong>
+              <h3>Care Kit</h3>
+              <p>Higher-priced bundle for families who want monitoring features.</p>
+            </article>
+            <article class="model-card">
+              <strong>$6-$12/mo</strong>
+              <h3>Care Plan</h3>
+              <p>Optional subscription for history, alerts, and caregiver tools.</p>
+            </article>
+            <article class="model-card">
+              <strong>B2B</strong>
+              <h3>Facility Pilots</h3>
+              <p>Multi-unit deployments for senior-living and assisted-care rooms.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="economics">
+        <div class="business-shell">
+          <div class="section-heading business-centered">
+            <p class="eyebrow">Unit Economics</p>
+            <h2>Margin improves as the enclosure, electronics, and assembly move from prototype to batch production.</h2>
+          </div>
+
+          <div class="economics">
+            <table class="unit-table" aria-label="Estimated unit economics">
+              <thead>
+                <tr>
+                  <th>Line Item</th>
+                  <th>Prototype</th>
+                  <th>Scaled Target</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Electronics + sensors</td>
+                  <td>$35-$55</td>
+                  <td>$18-$28</td>
+                </tr>
+                <tr>
+                  <td>Servo + mechanical parts</td>
+                  <td>$12-$20</td>
+                  <td>$6-$10</td>
+                </tr>
+                <tr>
+                  <td>Battery, USB-C, enclosure</td>
+                  <td>$25-$45</td>
+                  <td>$12-$22</td>
+                </tr>
+                <tr>
+                  <td>Assembly, packaging, QA</td>
+                  <td>$20-$35</td>
+                  <td>$10-$18</td>
+                </tr>
+                <tr>
+                  <td><strong>Estimated COGS</strong></td>
+                  <td><strong>$92-$155</strong></td>
+                  <td><strong>$46-$78</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="margin-callout">
+              <strong>50-65%</strong>
+              <span>
+                Target gross margin range if the Switch Kit sells between
+                $129-$149 and scaled COGS lands near the $46-$78 range.
+                Subscription revenue can improve blended margin.
+              </span>
             </div>
-            <div class="servo-arm"></div>
           </div>
-          <div class="phone-preview">
-            <div class="phone-top"></div>
-            <div class="app-screen">
-              <div>
-                <span class="status-dot"></span>
-                Bathroom online
-              </div>
-              <h2>BrightAssist</h2>
-              <p>Automatic mode</p>
-              <div class="toggle-row">
-                <span>Light on</span>
-                <span class="toggle active"></span>
-              </div>
-              <div class="toggle-row">
-                <span>Care alerts</span>
-                <span class="toggle"></span>
-              </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="gtm">
+        <div class="business-shell">
+          <div class="section-heading business-centered">
+            <p class="eyebrow">Go-To-Market</p>
+            <h2>Start with high-trust pilots, then expand into direct consumer sales.</h2>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-card">
+              <span>Phase 1</span>
+              <h3>Validate</h3>
+              <p>Run home pilots with caregivers and collect installation, reliability, and app feedback.</p>
+            </article>
+            <article class="timeline-card">
+              <span>Phase 2</span>
+              <h3>Package</h3>
+              <p>Standardize enclosure sizes, onboarding, packaging, warranty language, and support scripts.</p>
+            </article>
+            <article class="timeline-card">
+              <span>Phase 3</span>
+              <h3>Sell</h3>
+              <p>Launch DTC preorder campaigns targeting adult children buying for parents.</p>
+            </article>
+            <article class="timeline-card">
+              <span>Phase 4</span>
+              <h3>Scale</h3>
+              <p>Offer multi-room bundles and facility pilots for assisted living and senior housing.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="business-shell">
+          <div class="section-heading business-centered">
+            <p class="eyebrow">Risks + Mitigations</p>
+            <h2>The business depends on trust, reliability, and honest safety positioning.</h2>
+          </div>
+
+          <div class="risk-grid">
+            <article class="risk-card">
+              <h3>Reliability Risk</h3>
+              <p>
+                Mechanical switch actuation must work repeatedly. Mitigation:
+                durability testing, enclosure fit standards, and simple manual
+                override behavior.
+              </p>
+            </article>
+            <article class="risk-card">
+              <h3>Regulatory + Claims Risk</h3>
+              <p>
+                Fall detection should not be marketed as emergency replacement.
+                Mitigation: position BrightAssist as a safety-assist product and
+                validate radar features before commercial claims.
+              </p>
+            </article>
+            <article class="risk-card">
+              <h3>Installation Variation</h3>
+              <p>
+                Homes use different switch plates and bathroom layouts.
+                Mitigation: modular mounting plates, fit guide, and pilot data.
+              </p>
+            </article>
+            <article class="risk-card">
+              <h3>Customer Acquisition Cost</h3>
+              <p>
+                Consumer safety products need trust. Mitigation: focus on
+                caregiver communities, senior centers, testimonials, and B2B
+                referral channels.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section alt" id="invest">
+        <div class="business-shell">
+          <div class="cta-panel">
+            <div>
+              <p class="eyebrow">Business Thesis</p>
+              <h2>BrightAssist can become an affordable safety layer for aging-at-home bathrooms.</h2>
+              <p>
+                The near-term opportunity is a low-friction switch kit. The
+                long-term opportunity is recurring caregiver software, multi-room
+                bundles, and privacy-preserving sensing modules.
+              </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="intro" id="benefits">
-        <div>
-          <p class="eyebrow">Why Families Choose It</p>
-          <h2>More confidence at night, less friction during the day.</h2>
-        </div>
-        <p>
-          Bathrooms are one of the highest-risk rooms for older adults. BrightAssist
-          helps by making the first safety step automatic: lights turn on before a
-          person has to search for a switch in the dark. The product is designed
-          for homes, apartments, and assisted-living rooms where privacy and simple
-          installation matter.
-        </p>
-      </section>
-
-      <section class="feature-grid" aria-label="BrightAssist consumer benefits">
-        <article>
-          <span class="card-number">01</span>
-          <h3>Automatic Light Control</h3>
-          <p>
-            Motion sensing turns the bathroom light on when someone enters and
-            can turn it off after a quiet period.
-          </p>
-        </article>
-        <article>
-          <span class="card-number">02</span>
-          <h3>Privacy First</h3>
-          <p>
-            BrightAssist avoids cameras and microphones, making it better suited
-            for private spaces than video monitoring.
-          </p>
-        </article>
-        <article>
-          <span class="card-number">03</span>
-          <h3>Easy Installation</h3>
-          <p>
-            The switch module mounts over a standard light switch and uses a
-            servo to move the switch without changing wall wiring.
-          </p>
-        </article>
-        <article>
-          <span class="card-number">04</span>
-          <h3>Family App</h3>
-          <p>
-            Register devices, check status, switch modes, and control lighting
-            from a phone.
-          </p>
-        </article>
-      </section>
-
-      <section class="products section-band" id="products">
-        <div class="section-inner">
-          <div class="section-heading centered">
-            <p class="eyebrow">Product Line</p>
-            <h2>Choose the level of safety support your home needs.</h2>
-            <p>
-              BrightAssist is currently presented as a pilot product concept. The
-              commercial branch is designed for preorder, customer discovery, and
-              product-market testing.
-            </p>
-          </div>
-          <div class="product-grid">
-            <article class="product-card">
-              <div class="product-head">
-                <span class="badge">Starter</span>
-                <span class="product-mark">01</span>
-              </div>
-              <h3>BrightAssist Switch</h3>
-              <p>
-                Automatic bathroom lighting with app control and non-invasive
-                switch actuation.
-              </p>
-              <ul>
-                <li>Motion-triggered lighting</li>
-                <li>Manual and automatic app modes</li>
-                <li>Rechargeable battery and USB-C power</li>
-                <li>Designed for existing switches</li>
-              </ul>
-              <a class="button secondary" href="#order">Ask About Switch</a>
-            </article>
-
-            <article class="product-card featured">
-              <div class="product-head">
-                <span class="badge">Most Complete</span>
-                <span class="product-mark">02</span>
-              </div>
-              <h3>BrightAssist Care Kit</h3>
-              <p>
-                Switch automation plus caregiver-focused monitoring features for
-                families supporting independent living.
-              </p>
-              <ul>
-                <li>Everything in BrightAssist Switch</li>
-                <li>Device status and activity history</li>
-                <li>Caregiver notification workflow concept</li>
-                <li>Designed for bathroom safety pilots</li>
-              </ul>
-              <a class="button primary" href="#order">Request Pilot Kit</a>
-            </article>
-
-            <article class="product-card">
-              <div class="product-head">
-                <span class="badge">In Development</span>
-                <span class="product-mark">03</span>
-              </div>
-              <h3>BrightAssist Radar</h3>
-              <p>
-                A privacy-focused mmWave module being developed for possible fall
-                detection and smart-home integration.
-              </p>
-              <ul>
-                <li>60 GHz radar sensing research</li>
-                <li>No camera or wearable required</li>
-                <li>LED housing concept</li>
-                <li>Future Home Assistant compatibility goal</li>
-              </ul>
-              <a class="button secondary" href="#pilot">Join Radar Updates</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="how" id="how">
-        <div class="section-inner">
-          <div class="section-heading centered">
-            <p class="eyebrow">How It Works</p>
-            <h2>Safety support in three simple steps.</h2>
-          </div>
-          <div class="steps-grid">
-            <article>
-              <span class="step-number">1</span>
-              <h3>Mount</h3>
-              <p>
-                Place the BrightAssist switch module over the existing bathroom
-                light switch using its fitted enclosure.
-              </p>
-            </article>
-            <article>
-              <span class="step-number">2</span>
-              <h3>Connect</h3>
-              <p>
-                Pair the device with the BrightAssist app and choose automatic or
-                manual control.
-              </p>
-            </article>
-            <article>
-              <span class="step-number">3</span>
-              <h3>Assist</h3>
-              <p>
-                The sensor detects entry, turns on the light, and syncs state so
-                family members can see the device is active.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="pilot section-band" id="pilot">
-        <div class="section-heading">
-          <p class="eyebrow">Pilot Results</p>
-          <h2>Built from tested prototypes, not just a product mockup.</h2>
-        </div>
-        <div class="stats-grid">
-          <article>
-            <span class="stat">97%</span>
-            <h3>PIR Motion Detection</h3>
-            <p>
-              44 of 45 controlled motion events were detected in fast, normal,
-              and slow doorway trials.
-            </p>
-          </article>
-          <article>
-            <span class="stat">87%</span>
-            <h3>Radar Fall Research</h3>
-            <p>
-              39 of 45 controlled fall simulations triggered an alert in early
-              mmWave testing.
-            </p>
-          </article>
-          <article>
-            <span class="stat">&lt;3s</span>
-            <h3>Alert Goal</h3>
-            <p>
-              The care workflow is designed around quick cloud-connected
-              notification when a possible risk event is detected.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="order" id="order">
-        <div class="order-copy">
-          <p class="eyebrow">Early Access</p>
-          <h2>Bring BrightAssist to a home, care room, or pilot program.</h2>
-          <p>
-            BrightAssist is seeking early users, caregivers, senior-living
-            partners, and product testers. Use this page to present the product,
-            collect interest, and start conversations before full commercial
-            checkout is available.
-          </p>
-        </div>
-        <div class="order-panel">
-          <h3>Early Access Request</h3>
-          <p>
-            Interested customers can request a switch kit, care pilot, or radar
-            development update.
-          </p>
-          <div class="order-actions">
-            <a class="button primary" href="mailto:?subject=BrightAssist Early Access Request&body=Hi, I am interested in BrightAssist. Please send me more information about the product and pilot options.">
-              Start Email Request
-            </a>
-            <a class="button secondary" href="https://apps.apple.com/us/app/brightassist/id6755982709">
-              View App
+            <a class="button primary" href="mailto:?subject=BrightAssist Business Inquiry&body=Hi, I am interested in the BrightAssist business case, pilot strategy, and product economics.">
+              Contact About Business
             </a>
           </div>
-          <p class="small-note">
-            BrightAssist is a safety-assist product concept and prototype. It is
-            not a medical device and does not replace emergency services.
-          </p>
-        </div>
-      </section>
-
-      <section class="faq section-band">
-        <div class="section-heading">
-          <p class="eyebrow">Questions</p>
-          <h2>Designed for homes that need help without adding complexity.</h2>
-        </div>
-        <div class="faq-grid">
-          <article>
-            <h3>Does it require rewiring?</h3>
-            <p>No. The switch module is designed to move an existing switch mechanically.</p>
-          </article>
-          <article>
-            <h3>Does it use a camera?</h3>
-            <p>No. BrightAssist is built around motion and radar sensing, not video.</p>
-          </article>
-          <article>
-            <h3>Is fall detection final?</h3>
-            <p>The radar module is still in development and needs more real-home testing.</p>
-          </article>
-          <article>
-            <h3>Who is it for?</h3>
-            <p>Older adults, caregivers, families, and senior-living pilots.</p>
-          </article>
         </div>
       </section>
     </main>
 
     <footer>
       <span>BrightAssist</span>
-      <span>Consumer safety technology by Louis Sheng.</span>
+      <span>Business case and product strategy by Louis Sheng.</span>
     </footer>
   </body>
 </html>
