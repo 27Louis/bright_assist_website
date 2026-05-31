@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="BrightAssist is a Flutter and CircuitPython smart light switch project that combines motion sensing, servo control, Firebase, and a mobile app."
+    >
+    <title>BrightAssist | Smart Light Switch Project</title>
+    <link rel="icon" href="assets/logo.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="BrightAssist home">
+        <img src="assets/logo.png" alt="" class="brand-mark">
+        <span>BrightAssist</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#system">System</a>
+        <a href="#build">Build</a>
+        <a href="#source">Source</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section-band">
+        <div class="hero-copy">
+          <p class="eyebrow">Flutter + CircuitPython + Firebase</p>
+          <h1>A smart light switch assistant built for easier everyday control.</h1>
+          <p class="hero-text">
+            BrightAssist is a prototype that mounts over a standard light switch,
+            detects room motion, moves the switch with a servo, and syncs control
+            state with a mobile app in real time.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://apps.apple.com/us/app/brightassist/id6755982709">
+              View iOS App
+            </a>
+            <a class="button secondary" href="https://github.com/Sahagun/louis_sheng_bright_assist">
+              View Code
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="BrightAssist product preview">
+          <div class="wall-switch">
+            <div class="sensor"></div>
+            <div class="switch-slot">
+              <div class="switch-toggle"></div>
+            </div>
+            <div class="servo-arm"></div>
+          </div>
+          <div class="phone-preview">
+            <div class="phone-top"></div>
+            <div class="app-screen">
+              <div>
+                <span class="status-dot"></span>
+                Online
+              </div>
+              <h2>Hallway Light</h2>
+              <p>Automatic mode</p>
+              <div class="toggle-row">
+                <span>Light on</span>
+                <span class="toggle active"></span>
+              </div>
+              <div class="toggle-row">
+                <span>Motion sensing</span>
+                <span class="toggle active"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro">
+        <div>
+          <p class="eyebrow">Project Goal</p>
+          <h2>Make existing switches easier to reach and automate.</h2>
+        </div>
+        <p>
+          The project focuses on a non-invasive smart switch design. Instead of
+          rewiring a wall switch, a 3D-printed frame holds a microcontroller,
+          motion sensor, battery system, and servo mechanism that can physically
+          press the switch while the app provides remote control.
+        </p>
+      </section>
+
+      <section class="feature-grid" id="features" aria-label="BrightAssist features">
+        <article>
+          <span class="card-number">01</span>
+          <h3>Automatic Lighting</h3>
+          <p>
+            A PIR motion sensor detects movement in the room and turns the light
+            on automatically. After a hold period with no motion, the hardware
+            can switch the light back off.
+          </p>
+        </article>
+        <article>
+          <span class="card-number">02</span>
+          <h3>Remote App Control</h3>
+          <p>
+            The Flutter app lets a user register a device, see device status,
+            switch between manual and automatic modes, and toggle the light from
+            a phone or tablet.
+          </p>
+        </article>
+        <article>
+          <span class="card-number">03</span>
+          <h3>No Wall Rewiring</h3>
+          <p>
+            The prototype uses a servo to move a normal light switch from the
+            outside, keeping the build independent from household electrical
+            wiring.
+          </p>
+        </article>
+      </section>
+
+      <section class="system section-band" id="system">
+        <div class="section-heading">
+          <p class="eyebrow">System Design</p>
+          <h2>One shared state between the app, Firebase, and the device.</h2>
+        </div>
+        <div class="flow">
+          <div class="flow-node">
+            <strong>Mobile App</strong>
+            <span>Register devices, change modes, toggle lights</span>
+          </div>
+          <div class="flow-connector" aria-hidden="true"></div>
+          <div class="flow-node">
+            <strong>Firebase</strong>
+            <span>Stores device owner, status, mode, and activity data</span>
+          </div>
+          <div class="flow-connector" aria-hidden="true"></div>
+          <div class="flow-node">
+            <strong>ESP32-S3</strong>
+            <span>Reads motion, syncs state, and commands the servo</span>
+          </div>
+        </div>
+        <div class="data-panel">
+          <h3>Realtime paths used by the project</h3>
+          <code>devices/{deviceID}/isON</code>
+          <code>devices/{deviceID}/isAuto</code>
+          <code>devices/{deviceID}/ownerID</code>
+          <code>devices/{deviceID}/data</code>
+          <code>usersDevices/{uid}/devices/{deviceID}</code>
+        </div>
+      </section>
+
+      <section class="build" id="build">
+        <div class="section-heading">
+          <p class="eyebrow">Prototype Build</p>
+          <h2>Built from practical hardware and a polished app interface.</h2>
+        </div>
+        <div class="build-grid">
+          <article>
+            <h3>Hardware</h3>
+            <ul>
+              <li>Adafruit ESP32-S3 microcontroller</li>
+              <li>PIR motion sensor</li>
+              <li>8-channel PWM/servo controller</li>
+              <li>Servo-driven light switch mechanism</li>
+              <li>Battery-powered enclosure with optional plug-in power</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Software</h3>
+            <ul>
+              <li>Flutter mobile app for iOS, Android, and web targets</li>
+              <li>Firebase Authentication for accounts</li>
+              <li>Firebase Realtime Database for device state</li>
+              <li>CircuitPython hardware script</li>
+              <li>Local settings file for Wi-Fi and Firebase secrets</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="source section-band" id="source">
+        <div>
+          <p class="eyebrow">Open Project</p>
+          <h2>Explore the app and hardware code.</h2>
+          <p>
+            This repository contains the Flutter app, Firebase data structure,
+            and CircuitPython hardware script needed to understand how
+            BrightAssist works.
+          </p>
+        </div>
+        <div class="source-actions">
+          <a class="button primary" href="https://github.com/Sahagun/louis_sheng_bright_assist">
+            Open GitHub Repository
+          </a>
+          <a class="button secondary" href="https://sites.google.com/view/brightassist/privacy">
+            Privacy Policy
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>BrightAssist</span>
+      <span>Smart light switch project by Louis Sheng.</span>
+    </footer>
+  </body>
+</html>
