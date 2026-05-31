@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="BrightAssist is a Flutter and CircuitPython smart light switch project that combines motion sensing, servo control, Firebase, and a mobile app."
+      content="BrightAssist is a privacy-focused bathroom safety project that combines automatic lighting, mmWave fall detection research, Firebase, and a mobile app."
     >
-    <title>BrightAssist | Smart Light Switch Project</title>
+    <title>BrightAssist | Bathroom Safety Project</title>
     <link rel="icon" href="assets/logo.png">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -19,6 +19,8 @@
       </a>
       <nav aria-label="Main navigation">
         <a href="#features">Features</a>
+        <a href="#research">Research</a>
+        <a href="#testing">Testing</a>
         <a href="#system">System</a>
         <a href="#build">Build</a>
         <a href="#source">Source</a>
@@ -28,12 +30,12 @@
     <main id="top">
       <section class="hero section-band">
         <div class="hero-copy">
-          <p class="eyebrow">Flutter + CircuitPython + Firebase</p>
-          <h1>A smart light switch assistant built for easier everyday control.</h1>
+          <p class="eyebrow">Bathroom Safety + IoT + Privacy</p>
+          <h1>A smart bathroom safety system for independent living.</h1>
           <p class="hero-text">
-            BrightAssist is a prototype that mounts over a standard light switch,
-            detects room motion, moves the switch with a servo, and syncs control
-            state with a mobile app in real time.
+            BrightAssist combines automatic lighting, embedded sensors, Firebase,
+            and a mobile app to reduce bathroom risk without cameras, wearables,
+            or wall rewiring.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="https://apps.apple.com/us/app/brightassist/id6755982709">
@@ -60,7 +62,7 @@
                 <span class="status-dot"></span>
                 Online
               </div>
-              <h2>Hallway Light</h2>
+              <h2>Bathroom Light</h2>
               <p>Automatic mode</p>
               <div class="toggle-row">
                 <span>Light on</span>
@@ -78,13 +80,14 @@
       <section class="intro">
         <div>
           <p class="eyebrow">Project Goal</p>
-          <h2>Make existing switches easier to reach and automate.</h2>
+          <h2>Improve safety before and after a bathroom fall risk.</h2>
         </div>
         <p>
-          The project focuses on a non-invasive smart switch design. Instead of
-          rewiring a wall switch, a 3D-printed frame holds a microcontroller,
-          motion sensor, battery system, and servo mechanism that can physically
-          press the switch while the app provides remote control.
+          Bathrooms are dangerous for older adults because low lighting, wet
+          floors, and hard surfaces can turn a small slip into an emergency.
+          BrightAssist is designed around two ideas: prevent risk by turning on
+          lights automatically, and research private fall detection using sensor
+          data instead of cameras.
         </p>
       </section>
 
@@ -100,6 +103,15 @@
         </article>
         <article>
           <span class="card-number">02</span>
+          <h3>mmWave Fall Detection</h3>
+          <p>
+            A research module uses 60 GHz radar to track motion patterns such as
+            fast downward movement, sudden stops, and inactivity, without video
+            or audio recording.
+          </p>
+        </article>
+        <article>
+          <span class="card-number">03</span>
           <h3>Remote App Control</h3>
           <p>
             The Flutter app lets a user register a device, see device status,
@@ -108,7 +120,7 @@
           </p>
         </article>
         <article>
-          <span class="card-number">03</span>
+          <span class="card-number">04</span>
           <h3>No Wall Rewiring</h3>
           <p>
             The prototype uses a servo to move a normal light switch from the
@@ -118,25 +130,90 @@
         </article>
       </section>
 
+      <section class="research section-band" id="research">
+        <div class="section-heading">
+          <p class="eyebrow">Research Problem</p>
+          <h2>Most bathroom safety products ask users to give up privacy, comfort, or simplicity.</h2>
+          <p>
+            Cameras are not appropriate for private spaces. Wearables can be
+            forgotten or left uncharged. Emergency buttons require a person to
+            press them after something has already gone wrong. BrightAssist
+            explores a lower-cost system that can install over existing hardware,
+            preserve privacy, and send useful alerts through software.
+          </p>
+        </div>
+        <div class="module-grid">
+          <article>
+            <h3>Lighting Module</h3>
+            <p>
+              A PIR sensor detects entry, an ESP32-S3 handles logic and cloud
+              sync, and a servo flips the existing light switch through a
+              3D-printed faceplate-mounted shell.
+            </p>
+          </article>
+          <article>
+            <h3>Fall Detection Module</h3>
+            <p>
+              A separate mmWave concept integrates radar sensing with an ESP32
+              and LED-style housing, designed for camera-free bathroom monitoring
+              and future smart-home compatibility.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="testing" id="testing">
+        <div class="section-heading">
+          <p class="eyebrow">Controlled Testing</p>
+          <h2>Early experiments showed strong motion detection and promising fall detection.</h2>
+        </div>
+        <div class="stats-grid">
+          <article>
+            <span class="stat">97%</span>
+            <h3>PIR Motion Detection</h3>
+            <p>
+              44 of 45 motion events were detected in fast, normal, and slow
+              doorway trials, using a 0.5 second response window.
+            </p>
+          </article>
+          <article>
+            <span class="stat">87%</span>
+            <h3>mmWave Fall Detection</h3>
+            <p>
+              39 of 45 controlled fall simulations triggered an alert within
+              2.0 seconds using a ceiling-mounted radar test setup.
+            </p>
+          </article>
+          <article>
+            <span class="stat">&lt;3s</span>
+            <h3>Alert Transmission Goal</h3>
+            <p>
+              The project target is fast caregiver notification through Firebase
+              and the mobile app when a possible fall pattern is detected.
+            </p>
+          </article>
+        </div>
+      </section>
+
       <section class="system section-band" id="system">
         <div class="section-heading">
           <p class="eyebrow">System Design</p>
-          <h2>One shared state between the app, Firebase, and the device.</h2>
+          <h2>Sensor data, cloud state, and app controls stay connected.</h2>
         </div>
         <div class="flow">
           <div class="flow-node">
             <strong>Mobile App</strong>
-            <span>Register devices, change modes, toggle lights</span>
+            <span>Register devices, change modes, toggle lights, and monitor status</span>
           </div>
           <div class="flow-connector" aria-hidden="true"></div>
           <div class="flow-node">
             <strong>Firebase</strong>
-            <span>Stores device owner, status, mode, and activity data</span>
+            <span>Stores device owner, status, mode, events, and activity data</span>
           </div>
           <div class="flow-connector" aria-hidden="true"></div>
           <div class="flow-node">
-            <strong>ESP32-S3</strong>
-            <span>Reads motion, syncs state, and commands the servo</span>
+            <strong>Embedded Hardware</strong>
+            <span>Reads PIR or mmWave sensors, syncs state, and commands actuators</span>
           </div>
         </div>
         <div class="data-panel">
@@ -152,7 +229,7 @@
       <section class="build" id="build">
         <div class="section-heading">
           <p class="eyebrow">Prototype Build</p>
-          <h2>Built from practical hardware and a polished app interface.</h2>
+          <h2>Built from practical hardware, sensor research, and a working app interface.</h2>
         </div>
         <div class="build-grid">
           <article>
@@ -160,9 +237,11 @@
             <ul>
               <li>Adafruit ESP32-S3 microcontroller</li>
               <li>PIR motion sensor</li>
+              <li>60 GHz mmWave radar sensor for advanced fall detection tests</li>
               <li>8-channel PWM/servo controller</li>
               <li>Servo-driven light switch mechanism</li>
-              <li>Battery-powered enclosure with optional plug-in power</li>
+              <li>18650 rechargeable battery system and USB-C power</li>
+              <li>3D-printed flame-resistant enclosure</li>
             </ul>
           </article>
           <article>
@@ -172,8 +251,34 @@
               <li>Firebase Authentication for accounts</li>
               <li>Firebase Realtime Database for device state</li>
               <li>CircuitPython hardware script</li>
+              <li>Realtime status updates and event logging</li>
               <li>Local settings file for Wi-Fi and Firebase secrets</li>
             </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="limitations section-band">
+        <div class="section-heading">
+          <p class="eyebrow">Limitations + Next Steps</p>
+          <h2>The prototype is promising, but real homes are the next challenge.</h2>
+        </div>
+        <div class="module-grid">
+          <article>
+            <h3>Current Limits</h3>
+            <p>
+              Fall detection identifies likely falls from motion patterns, not
+              confirmed impact. Results can change with bathroom layout, sensor
+              placement, user movement, and long-term battery behavior.
+            </p>
+          </article>
+          <article>
+            <h3>Future Improvements</h3>
+            <p>
+              Next steps include improving radar signal processing, testing in
+              real homes or care facilities, refining caregiver dashboards, and
+              supporting multiple rooms.
+            </p>
           </article>
         </div>
       </section>
@@ -184,8 +289,8 @@
           <h2>Explore the app and hardware code.</h2>
           <p>
             This repository contains the Flutter app, Firebase data structure,
-            and CircuitPython hardware script needed to understand how
-            BrightAssist works.
+            CircuitPython hardware script, and GitHub Pages site for the
+            BrightAssist project.
           </p>
         </div>
         <div class="source-actions">
