@@ -5,501 +5,433 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="BrightAssist business case: market opportunity, unit economics, revenue model, margins, go-to-market strategy, and growth plan."
+      content="BrightAssist developer and science competition documentation: architecture, hardware, software, experiment design, data, and repo guide."
     >
-    <title>BrightAssist | Business Case</title>
+    <title>BrightAssist | Developer + Science Fair Technical Brief</title>
     <link rel="icon" href="assets/logo.png">
-    <link rel="stylesheet" href="styles.css?v=business-1">
+    <link rel="stylesheet" href="styles.css?v=developers-1">
     <style>
-      .business-shell {
-        width: min(1180px, calc(100vw - 48px));
-        margin: 0 auto;
+      .dev-hero,
+      .dev-section {
+        padding: clamp(56px, 8vw, 104px) clamp(18px, 5vw, 72px);
       }
 
-      .business-hero {
+      .dev-hero {
         display: grid;
         grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
-        gap: clamp(36px, 6vw, 80px);
+        gap: clamp(34px, 6vw, 78px);
         align-items: center;
         min-height: calc(100vh - 72px);
-        padding: clamp(56px, 8vw, 104px) clamp(18px, 5vw, 72px);
         background:
           linear-gradient(135deg, rgba(223, 245, 239, 0.96), rgba(255, 255, 255, 0.96)),
           #dff5ef;
       }
 
-      .business-dashboard {
-        display: grid;
-        gap: 16px;
+      .dev-shell {
+        width: min(1180px, 100%);
+        margin: 0 auto;
       }
 
-      .metric-panel,
-      .business-card,
-      .model-card,
-      .timeline-card,
-      .risk-card,
-      .cta-panel {
-        border: 1px solid #cfe2de;
-        border-radius: 8px;
-        background: #fff;
-        box-shadow: 0 18px 50px rgba(5, 58, 58, 0.11);
-      }
-
-      .metric-panel {
-        padding: 26px;
-      }
-
-      .metric-panel strong {
-        display: block;
-        color: #086c70;
-        font-size: clamp(2rem, 4vw, 3.7rem);
-        line-height: 0.95;
-      }
-
-      .metric-panel span {
-        display: block;
-        margin-top: 10px;
-        color: #55706e;
-        line-height: 1.45;
-      }
-
-      .section {
-        padding: clamp(56px, 8vw, 104px) clamp(18px, 5vw, 72px);
-      }
-
-      .section.alt {
+      .dev-section.alt {
         background:
           linear-gradient(135deg, rgba(223, 245, 239, 0.92), rgba(255, 255, 255, 0.96)),
           #dff5ef;
       }
 
-      .section-heading.business-centered {
+      .dev-panel,
+      .tech-card,
+      .code-card,
+      .data-card,
+      .rubric-card {
+        border: 1px solid #cfe2de;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 16px 44px rgba(5, 58, 58, 0.1);
+      }
+
+      .dev-panel {
+        padding: 26px;
+      }
+
+      .dev-panel code,
+      .code-card code {
+        display: block;
+        padding: 12px;
+        border: 1px solid #d8ebe7;
+        border-radius: 8px;
+        color: #064e52;
+        background: #f7fffc;
+        overflow-wrap: anywhere;
+      }
+
+      .architecture {
+        display: grid;
+        grid-template-columns: 1fr 52px 1fr 52px 1fr;
+        align-items: stretch;
+        margin-top: 26px;
+      }
+
+      .arch-node {
+        padding: 24px;
+        border: 1px solid #cfe2de;
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .arch-node strong {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+      }
+
+      .arch-node span {
+        color: #55706e;
+        line-height: 1.55;
+      }
+
+      .arch-link {
+        position: relative;
+      }
+
+      .arch-link::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #086c70;
+      }
+
+      .grid-2,
+      .grid-3,
+      .grid-4 {
+        display: grid;
+        gap: 18px;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .tech-card,
+      .code-card,
+      .data-card,
+      .rubric-card {
+        padding: 26px;
+      }
+
+      .tech-card ul,
+      .code-card ul,
+      .rubric-card ul {
+        display: grid;
+        gap: 10px;
+        margin: 16px 0 0;
+        padding-left: 20px;
+        color: #55706e;
+        line-height: 1.55;
+      }
+
+      .metric {
+        display: block;
+        margin-bottom: 22px;
+        color: #086c70;
+        font-size: clamp(2.7rem, 5vw, 4.8rem);
+        font-weight: 900;
+        line-height: 0.9;
+      }
+
+      .section-heading.dev-centered {
         max-width: 860px;
         margin: 0 auto 34px;
         text-align: center;
       }
 
-      .section-heading.business-centered p {
+      .section-heading.dev-centered p {
         margin-right: auto;
         margin-left: auto;
       }
 
-      .business-grid {
+      .repo-map {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
+        gap: 10px;
       }
 
-      .business-card {
-        min-height: 260px;
-        padding: 28px;
-      }
-
-      .business-card .card-number {
-        margin-bottom: 34px;
-      }
-
-      .model-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 16px;
-      }
-
-      .model-card {
-        padding: 24px;
-      }
-
-      .model-card strong {
+      .repo-map code {
         display: block;
-        margin-bottom: 8px;
-        color: #086c70;
-        font-size: 1.45rem;
-      }
-
-      .economics {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
-        gap: 22px;
-        align-items: stretch;
-      }
-
-      .unit-table {
-        width: 100%;
-        border-collapse: collapse;
-        overflow: hidden;
-        border: 1px solid #cfe2de;
+        padding: 12px;
+        border: 1px solid #d8ebe7;
         border-radius: 8px;
-        background: #fff;
-        box-shadow: 0 18px 50px rgba(5, 58, 58, 0.11);
-      }
-
-      .unit-table th,
-      .unit-table td {
-        padding: 16px;
-        border-bottom: 1px solid #d8ebe7;
-        text-align: left;
-      }
-
-      .unit-table th {
-        color: #064e52;
         background: #f7fffc;
-      }
-
-      .unit-table tr:last-child td {
-        border-bottom: 0;
-      }
-
-      .margin-callout {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 30px;
-        border: 1px solid rgba(8, 108, 112, 0.42);
-        border-radius: 8px;
-        background: #086c70;
-        color: #fff;
-        box-shadow: 0 18px 50px rgba(5, 58, 58, 0.18);
-      }
-
-      .margin-callout strong {
-        font-size: clamp(3rem, 7vw, 5.8rem);
-        line-height: 0.9;
-      }
-
-      .margin-callout span {
-        margin-top: 18px;
-        color: rgba(255, 255, 255, 0.82);
-        line-height: 1.55;
-      }
-
-      .timeline {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 16px;
-      }
-
-      .timeline-card {
-        padding: 24px;
-      }
-
-      .timeline-card span {
-        display: inline-flex;
-        margin-bottom: 20px;
-        padding: 7px 10px;
-        border-radius: 999px;
         color: #064e52;
-        background: #dff5ef;
-        font-weight: 800;
-      }
-
-      .risk-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
-      }
-
-      .risk-card {
-        padding: 26px;
-      }
-
-      .cta-panel {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 24px;
-        align-items: center;
-        padding: 30px;
-      }
-
-      .business-card p,
-      .model-card p,
-      .timeline-card p,
-      .risk-card p,
-      .cta-panel p {
-        color: #55706e;
-        line-height: 1.65;
       }
 
       @media (max-width: 980px) {
-        .business-hero,
-        .business-grid,
-        .model-grid,
-        .economics,
-        .timeline,
-        .risk-grid,
-        .cta-panel {
+        .dev-hero,
+        .architecture,
+        .grid-2,
+        .grid-3,
+        .grid-4 {
           grid-template-columns: 1fr;
+        }
+
+        .arch-link {
+          height: 34px;
+        }
+
+        .arch-link::before {
+          top: 0;
+          left: 50%;
+          width: 2px;
+          height: 100%;
         }
       }
     </style>
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="BrightAssist business home">
+      <a class="brand" href="#top" aria-label="BrightAssist developer home">
         <img src="assets/logo.png" alt="" class="brand-mark">
         <span>BrightAssist</span>
       </a>
-      <nav aria-label="Business navigation">
-        <a href="#opportunity">Opportunity</a>
-        <a href="#model">Model</a>
-        <a href="#economics">Margins</a>
-        <a href="#gtm">Go-To-Market</a>
-        <a href="#invest">Invest</a>
+      <nav aria-label="Developer navigation">
+        <a href="#architecture">Architecture</a>
+        <a href="#hardware">Hardware</a>
+        <a href="#software">Software</a>
+        <a href="#experiments">Experiments</a>
+        <a href="#repo">Repo</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="business-hero">
+      <section class="dev-hero">
         <div>
-          <p class="eyebrow">Business Case</p>
-          <h1>BrightAssist turns bathroom safety into a scalable smart-home product.</h1>
+          <p class="eyebrow">Developer + Science Competition Brief</p>
+          <h1>BrightAssist combines embedded sensing, cloud sync, and assistive design.</h1>
           <p class="hero-text">
-            A non-invasive safety device for older adults, caregivers, and
-            senior-living operators, built around automatic lighting, app
-            connectivity, and a roadmap toward privacy-focused sensing.
+            A Firebase-backed smart bathroom safety prototype with a Flutter app,
+            CircuitPython hardware, PIR lighting automation, servo actuation, and
+            an mmWave fall-detection research path.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#economics">View Unit Economics</a>
-            <a class="button secondary" href="#gtm">Growth Strategy</a>
+            <a class="button primary" href="#repo">View Repo Guide</a>
+            <a class="button secondary" href="#experiments">See Test Data</a>
           </div>
         </div>
 
-        <div class="business-dashboard" aria-label="Business highlights">
-          <div class="metric-panel">
-            <strong>50-65%</strong>
-            <span>Target gross margin range for direct-to-consumer hardware bundles after scale manufacturing.</span>
-          </div>
-          <div class="metric-panel">
-            <strong>3</strong>
-            <span>Revenue paths: hardware kit sales, care monitoring subscription, and B2B pilot deployments.</span>
-          </div>
-          <div class="metric-panel">
-            <strong>Low install friction</strong>
-            <span>No rewiring requirement lowers adoption barriers and reduces professional installation cost.</span>
-          </div>
+        <div class="dev-panel">
+          <h2>Project Snapshot</h2>
+          <p>
+            BrightAssist is designed for independent living and bathroom safety.
+            The working switch module turns lights on automatically and syncs
+            state to Firebase. The research module studies 60 GHz mmWave radar
+            for privacy-preserving fall detection.
+          </p>
+          <code>Flutter app + Firebase + ESP32-S3 + PIR + Servo</code>
         </div>
       </section>
 
-      <section class="section" id="opportunity">
-        <div class="business-shell">
-          <div class="section-heading business-centered">
-            <p class="eyebrow">Market Opportunity</p>
-            <h2>Aging-at-home needs practical safety products, not complicated monitoring systems.</h2>
-            <p>
-              BrightAssist targets families who want safer bathrooms for older
-              adults without cameras, wearables, or expensive smart-home rewiring.
-              The product sits between low-cost night lights and high-cost care
-              monitoring systems.
-            </p>
+      <section class="dev-section" id="architecture">
+        <div class="dev-shell">
+          <div class="section-heading dev-centered">
+            <p class="eyebrow">System Architecture</p>
+            <h2>One realtime loop connects app controls, database state, and physical actuation.</h2>
           </div>
 
-          <div class="business-grid">
-            <article class="business-card">
-              <span class="card-number">01</span>
-              <h3>Customer Pain</h3>
-              <p>
-                Bathroom falls are high-risk, but many homes rely on manual light
-                switches, forgotten wearables, or privacy-invasive cameras.
-              </p>
-            </article>
-            <article class="business-card">
-              <span class="card-number">02</span>
-              <h3>Adoption Advantage</h3>
-              <p>
-                Mount-over-switch design reduces installation complexity and
-                makes pilots easier for families, landlords, and care facilities.
-              </p>
-            </article>
-            <article class="business-card">
-              <span class="card-number">03</span>
-              <h3>Expansion Path</h3>
-              <p>
-                The same app and device account model can support multiple rooms,
-                caregiver analytics, and future radar sensing modules.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section alt" id="model">
-        <div class="business-shell">
-          <div class="section-heading business-centered">
-            <p class="eyebrow">Revenue Model</p>
-            <h2>Hardware creates the entry point; software and pilots create recurring upside.</h2>
-          </div>
-
-          <div class="model-grid">
-            <article class="model-card">
-              <strong>$99-$149</strong>
-              <h3>Switch Kit</h3>
-              <p>One-time sale for automatic lighting and app control.</p>
-            </article>
-            <article class="model-card">
-              <strong>$199-$299</strong>
-              <h3>Care Kit</h3>
-              <p>Higher-priced bundle for families who want monitoring features.</p>
-            </article>
-            <article class="model-card">
-              <strong>$6-$12/mo</strong>
-              <h3>Care Plan</h3>
-              <p>Optional subscription for history, alerts, and caregiver tools.</p>
-            </article>
-            <article class="model-card">
-              <strong>B2B</strong>
-              <h3>Facility Pilots</h3>
-              <p>Multi-unit deployments for senior-living and assisted-care rooms.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="economics">
-        <div class="business-shell">
-          <div class="section-heading business-centered">
-            <p class="eyebrow">Unit Economics</p>
-            <h2>Margin improves as the enclosure, electronics, and assembly move from prototype to batch production.</h2>
-          </div>
-
-          <div class="economics">
-            <table class="unit-table" aria-label="Estimated unit economics">
-              <thead>
-                <tr>
-                  <th>Line Item</th>
-                  <th>Prototype</th>
-                  <th>Scaled Target</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Electronics + sensors</td>
-                  <td>$35-$55</td>
-                  <td>$18-$28</td>
-                </tr>
-                <tr>
-                  <td>Servo + mechanical parts</td>
-                  <td>$12-$20</td>
-                  <td>$6-$10</td>
-                </tr>
-                <tr>
-                  <td>Battery, USB-C, enclosure</td>
-                  <td>$25-$45</td>
-                  <td>$12-$22</td>
-                </tr>
-                <tr>
-                  <td>Assembly, packaging, QA</td>
-                  <td>$20-$35</td>
-                  <td>$10-$18</td>
-                </tr>
-                <tr>
-                  <td><strong>Estimated COGS</strong></td>
-                  <td><strong>$92-$155</strong></td>
-                  <td><strong>$46-$78</strong></td>
-                </tr>
-              </tbody>
-            </table>
-
-            <div class="margin-callout">
-              <strong>50-65%</strong>
-              <span>
-                Target gross margin range if the Switch Kit sells between
-                $129-$149 and scaled COGS lands near the $46-$78 range.
-                Subscription revenue can improve blended margin.
-              </span>
+          <div class="architecture">
+            <div class="arch-node">
+              <strong>Flutter App</strong>
+              <span>Authentication, device registration, status display, manual mode, automatic mode, and light toggling.</span>
+            </div>
+            <div class="arch-link" aria-hidden="true"></div>
+            <div class="arch-node">
+              <strong>Firebase Realtime Database</strong>
+              <span>Shared source of truth for device owner, light state, auto mode, descriptions, and timestamped data.</span>
+            </div>
+            <div class="arch-link" aria-hidden="true"></div>
+            <div class="arch-node">
+              <strong>ESP32-S3 Hardware</strong>
+              <span>Reads PIR motion, moves the servo, posts activity data, and follows remote app state changes.</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section alt" id="gtm">
-        <div class="business-shell">
-          <div class="section-heading business-centered">
-            <p class="eyebrow">Go-To-Market</p>
-            <h2>Start with high-trust pilots, then expand into direct consumer sales.</h2>
+      <section class="dev-section alt" id="hardware">
+        <div class="dev-shell">
+          <div class="section-heading dev-centered">
+            <p class="eyebrow">Hardware Stack</p>
+            <h2>Non-invasive mechanical control keeps the prototype independent from household wiring.</h2>
           </div>
 
-          <div class="timeline">
-            <article class="timeline-card">
-              <span>Phase 1</span>
-              <h3>Validate</h3>
-              <p>Run home pilots with caregivers and collect installation, reliability, and app feedback.</p>
+          <div class="grid-3">
+            <article class="tech-card">
+              <h3>Switch Module</h3>
+              <ul>
+                <li>Adafruit ESP32-S3 Feather</li>
+                <li>PIR motion sensor on digital pin D12</li>
+                <li>8-channel Servo FeatherWing</li>
+                <li>TowerPro SG92R-style servo actuation</li>
+                <li>3D-printed faceplate-mounted shell</li>
+              </ul>
             </article>
-            <article class="timeline-card">
-              <span>Phase 2</span>
-              <h3>Package</h3>
-              <p>Standardize enclosure sizes, onboarding, packaging, warranty language, and support scripts.</p>
+            <article class="tech-card">
+              <h3>Power + Enclosure</h3>
+              <ul>
+                <li>18650 rechargeable battery system</li>
+                <li>USB-C power input</li>
+                <li>Mounting screws and fitted shell</li>
+                <li>Designed for bathroom installation constraints</li>
+              </ul>
             </article>
-            <article class="timeline-card">
-              <span>Phase 3</span>
-              <h3>Sell</h3>
-              <p>Launch DTC preorder campaigns targeting adult children buying for parents.</p>
-            </article>
-            <article class="timeline-card">
-              <span>Phase 4</span>
-              <h3>Scale</h3>
-              <p>Offer multi-room bundles and facility pilots for assisted living and senior housing.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="business-shell">
-          <div class="section-heading business-centered">
-            <p class="eyebrow">Risks + Mitigations</p>
-            <h2>The business depends on trust, reliability, and honest safety positioning.</h2>
-          </div>
-
-          <div class="risk-grid">
-            <article class="risk-card">
-              <h3>Reliability Risk</h3>
-              <p>
-                Mechanical switch actuation must work repeatedly. Mitigation:
-                durability testing, enclosure fit standards, and simple manual
-                override behavior.
-              </p>
-            </article>
-            <article class="risk-card">
-              <h3>Regulatory + Claims Risk</h3>
-              <p>
-                Fall detection should not be marketed as emergency replacement.
-                Mitigation: position BrightAssist as a safety-assist product and
-                validate radar features before commercial claims.
-              </p>
-            </article>
-            <article class="risk-card">
-              <h3>Installation Variation</h3>
-              <p>
-                Homes use different switch plates and bathroom layouts.
-                Mitigation: modular mounting plates, fit guide, and pilot data.
-              </p>
-            </article>
-            <article class="risk-card">
-              <h3>Customer Acquisition Cost</h3>
-              <p>
-                Consumer safety products need trust. Mitigation: focus on
-                caregiver communities, senior centers, testimonials, and B2B
-                referral channels.
-              </p>
+            <article class="tech-card">
+              <h3>Research Module</h3>
+              <ul>
+                <li>60 GHz mmWave fall-detection sensor</li>
+                <li>ESP32-based radar processing concept</li>
+                <li>LED housing / smart-home integration path</li>
+                <li>No camera or wearable required</li>
+              </ul>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section alt" id="invest">
-        <div class="business-shell">
-          <div class="cta-panel">
-            <div>
-              <p class="eyebrow">Business Thesis</p>
-              <h2>BrightAssist can become an affordable safety layer for aging-at-home bathrooms.</h2>
+      <section class="dev-section" id="software">
+        <div class="dev-shell">
+          <div class="section-heading dev-centered">
+            <p class="eyebrow">Software Design</p>
+            <h2>The app and hardware use simple Firebase paths to stay synchronized.</h2>
+          </div>
+
+          <div class="grid-2">
+            <article class="code-card">
+              <h3>Firebase Paths</h3>
+              <div class="repo-map">
+                <code>devices/{deviceID}/isON</code>
+                <code>devices/{deviceID}/isAuto</code>
+                <code>devices/{deviceID}/ownerID</code>
+                <code>devices/{deviceID}/description</code>
+                <code>devices/{deviceID}/data</code>
+                <code>usersDevices/{uid}/devices/{deviceID}</code>
+              </div>
+            </article>
+            <article class="code-card">
+              <h3>Control Logic</h3>
+              <ul>
+                <li>Auto mode: PIR motion triggers servo ON and Firebase updates.</li>
+                <li>Hold time: light can turn off after 5 minutes without motion.</li>
+                <li>Manual mode: app writes light state and hardware follows it.</li>
+                <li>Status posts include timestamp, light state, and health status.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="dev-section alt" id="experiments">
+        <div class="dev-shell">
+          <div class="section-heading dev-centered">
+            <p class="eyebrow">Science Competition Experiment</p>
+            <h2>The project tests both prevention and detection: lighting response and possible fall sensing.</h2>
+          </div>
+
+          <div class="grid-3">
+            <article class="data-card">
+              <span class="metric">97%</span>
+              <h3>PIR Motion Detection</h3>
               <p>
-                The near-term opportunity is a low-friction switch kit. The
-                long-term opportunity is recurring caregiver software, multi-room
-                bundles, and privacy-preserving sensing modules.
+                44 of 45 motion trials were detected. The setup used fast,
+                normal, and slow doorway events with a 0.5 second detection rule.
               </p>
-            </div>
-            <a class="button primary" href="mailto:?subject=BrightAssist Business Inquiry&body=Hi, I am interested in the BrightAssist business case, pilot strategy, and product economics.">
-              Contact About Business
-            </a>
+            </article>
+            <article class="data-card">
+              <span class="metric">87%</span>
+              <h3>mmWave Fall Detection</h3>
+              <p>
+                39 of 45 controlled fall simulations triggered an alert within
+                2.0 seconds using a ceiling-mounted radar test configuration.
+              </p>
+            </article>
+            <article class="data-card">
+              <span class="metric">&lt;3s</span>
+              <h3>Alert Transmission Goal</h3>
+              <p>
+                The system target is fast caregiver notification through Wi-Fi,
+                Firebase, and the connected app after a possible fall event.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="dev-section">
+        <div class="dev-shell">
+          <div class="section-heading dev-centered">
+            <p class="eyebrow">Judging Rubric</p>
+            <h2>Key science fair categories mapped to the project.</h2>
+          </div>
+
+          <div class="grid-4">
+            <article class="rubric-card">
+              <h3>Problem</h3>
+              <p>Bathroom falls are high risk, and many existing systems are expensive, forgotten, or privacy-invasive.</p>
+            </article>
+            <article class="rubric-card">
+              <h3>Engineering Solution</h3>
+              <p>A non-invasive switch module plus radar research module for privacy-preserving safety support.</p>
+            </article>
+            <article class="rubric-card">
+              <h3>Testing</h3>
+              <p>Controlled trials measured detection accuracy across motion and simulated fall speeds.</p>
+            </article>
+            <article class="rubric-card">
+              <h3>Limitations</h3>
+              <p>Fall detection is based on motion patterns and needs more real-home testing before final claims.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="dev-section alt" id="repo">
+        <div class="dev-shell">
+          <div class="section-heading dev-centered">
+            <p class="eyebrow">Repository Guide</p>
+            <h2>Developers can inspect the app, hardware script, Firebase structure, and website branches.</h2>
+          </div>
+
+          <div class="grid-2">
+            <article class="code-card">
+              <h3>Main Files</h3>
+              <div class="repo-map">
+                <code>lib/main.dart</code>
+                <code>lib/home_page.dart</code>
+                <code>lib/device_page.dart</code>
+                <code>lib/register_device_page.dart</code>
+                <code>hardware code/code.py</code>
+                <code>hardware code/settings.toml.example</code>
+              </div>
+            </article>
+            <article class="code-card">
+              <h3>Local Setup</h3>
+              <div class="repo-map">
+                <code>flutter pub get</code>
+                <code>flutter analyze</code>
+                <code>flutter test</code>
+              </div>
+              <p>
+                Hardware secrets are loaded from `settings.toml`, so Wi-Fi and
+                Firebase credentials do not need to be hardcoded in the script.
+              </p>
+            </article>
           </div>
         </div>
       </section>
@@ -507,7 +439,7 @@
 
     <footer>
       <span>BrightAssist</span>
-      <span>Business case and product strategy by Louis Sheng.</span>
+      <span>Developer and science competition technical brief by Louis Sheng.</span>
     </footer>
   </body>
 </html>
